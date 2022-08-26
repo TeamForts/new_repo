@@ -37,6 +37,11 @@
         @include button-accept(300px, 50px);
       }
 
+      &__button-cancel {
+        margin: rem(20px);
+        @include button-cancel(200px, 50px);
+      }
+
     }
 
     background-image:  url(../../assets/images/fon.svg);
