@@ -1,0 +1,36 @@
+<div class="backdrop">
+  <div class="modal" [formGroup]="sweetForm">
+    <div class="header">
+      <div class="header__title">
+        Где живете?
+      </div>
+      <div class="header__close">
+        <dx-button (onClick)="close.emit(null)"
+                   icon="close"></dx-button>
+      </div>
+    </div>
+    <div class="container">
+
+      <div class="information">
+        <div class="information__content">
+          <input class="information__input" formControlName="address"
+                 placeholder="г.Москва ул.Ивана ...">
+        </div>
+      </div>
+      <div id="map-test" class="map"></div>
+
+      <div class="footer">
+        <button class="footer__button-cancel" (click)="close.emit(null)">
+          Попрощаться
+        </button>
+        <button class="footer__button-accept" [class.disabled]="!sweetForm.valid"
+                [disabled]="!sweetForm.valid"
+                (click)="accept()">
+          Сохранить
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

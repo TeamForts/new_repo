@@ -1,0 +1,54 @@
+@import "../../../common/styles/theming";
+
+.backdrop {
+
+  .modal {
+    width: rem(600px);
+    height: rem(300px);
+
+    .header {
+      height: rem(50px);
+    }
+
+    .container {
+      height: rem(250px);
+
+      .information {
+        @include wrapperFlexRow;
+        margin-top: rem(25px);
+
+        &__subtitle {
+          font-size: rem(20px);
+          color: $subtitle-color;
+        }
+
+        &__content {
+          font-size: rem(20px);
+          color: $subtitle-color;
+          margin-left: rem(5px);
+        }
+
+      }
+
+      .footer {
+        margin-top: rem(40px);
+        @include wrapperFlexBetweenRow;
+
+        &__button-accept {
+          @include button-accept(200px, 45px);
+        }
+
+        &__button-cancel {
+          @include button-cancel(200px, 45px);
+        }
+
+        .disabled {
+          background: rgba(128, 128, 128, 0.25);
+        }
+      }
+
+    }
+
+  }
+
+}
