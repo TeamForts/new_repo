@@ -1,0 +1,49 @@
+@import "../common/styles/theming";
+
+.wrapper {
+  @include wrapperFlex;
+
+  .header-wrapper {
+    @include wrapperFlexCenteredRow;
+    height: rem(50px);
+    width: 100%;
+    background: $header-color;
+  }
+
+  .content-wrapper {
+    @include wrapperFlexCenteredColumn;
+    height: calc(100% - 50px);
+    width: 100%;
+
+    .content {
+      @include wrapperFlexCenteredColumn;
+      max-width: rem(650px);
+      gap: 1rem;
+      text-align: center;
+
+      &__title {
+        font-size: rem(72px);
+        line-height: rem(80px);
+        color: $title-color
+      }
+
+      &__subtitle {
+        font-size: rem(18px);
+        line-height: rem(24px);
+        color: $subtitle-color;
+      }
+
+      &__button {
+        @include button-accept(300px, 50px);
+      }
+
+    }
+
+    background-image:  url(../../assets/images/fon.svg);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-color: $content-color;
+  }
+}

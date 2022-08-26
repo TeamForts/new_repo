@@ -1,0 +1,50 @@
+<div class="backdrop">
+  <div class="modal">
+
+    <div class="header">
+      <div class="header__title">
+        Давайте познакомимся!
+      </div>
+      <div class="header__close">
+        <dx-button (onClick)="close.emit(null)"
+                   icon="close"></dx-button>
+      </div>
+    </div>
+
+    <div class="container" [formGroup]="sweetForm" >
+
+      <div class="information">
+        <div class="information__subtitle">
+          Фамилия
+        </div>
+        <div class="information__content">
+          <input class="information__input" formControlName="personName"
+                 placeholder="Иванов...">
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="information__subtitle">
+          Имя
+        </div>
+        <div class="information__content">
+          <input class="information__input" formControlName="personSurname"
+                 placeholder="Иван...">
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="footer__button-cancel" (click)="close.emit(null)">
+          Попрощаться
+        </button>
+        <button class="footer__button-accept" [class.disabled]="!sweetForm.valid"
+                [disabled]="!sweetForm.valid"
+                (click)="accept()">
+          Поздороваться
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

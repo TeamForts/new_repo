@@ -1,0 +1,59 @@
+@import "../../../common/styles/theming";
+
+.backdrop {
+
+  .modal {
+    width: rem(600px);
+    height: rem(700px);
+
+    .header {
+
+    }
+
+    .container {
+      padding: 0;
+      height: 650px;
+
+      .information {
+        padding: 1rem;
+        @include wrapperFlexColumn;
+
+        &__subtitle {
+          font-size: rem(20px);
+          color: $subtitle-color;
+        }
+
+        &__input {
+          margin-top: rem(5px);
+          @include input-data;
+        }
+      }
+
+      .map {
+        margin-top: rem(5px);
+        width: 100%;
+        height: 100%;
+      }
+
+      .footer {
+
+        padding: 1rem;
+        @include wrapperFlexBetweenRow;
+
+        &__button-accept {
+          @include button-accept(200px, 45px);
+        }
+
+        &__button-cancel {
+          @include button-cancel(200px, 45px);
+        }
+
+        .disabled {
+          background: rgba(128, 128, 128, 0.25);
+        }
+      }
+
+    }
+
+  }
+}

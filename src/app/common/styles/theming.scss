@@ -1,0 +1,55 @@
+@import "mixins";
+@import "misc";
+@import "palette";
+
+.backdrop {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: rgba(0, 0, 0, 0.3);
+
+  position: fixed;
+
+  .modal {
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: rem(500px);
+    height: rem(400px);
+
+    background: $content-color;
+    border-radius: rem(12px);
+
+    position: absolute;
+
+    .header {
+      @include wrapperFlexBetweenRow;
+      padding: 1rem;
+      height: rem(50px);
+      font-size: rem(24px);
+      color: $title-color;
+    }
+
+    .container {
+      @include wrapperFlexEvenlyColumn;
+      padding: 0 1rem;
+      height: rem(350px);
+
+      border-top: 1px solid black;
+    }
+
+  }
+}
+
+.error{
+  background: #f8acac !important;
+  border: 1px solid red!important;
+
+  ::ng-deep .dx-dropdowneditor-icon {
+    background: #f8acac !important;
+  }
+}

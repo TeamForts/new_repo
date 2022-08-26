@@ -1,0 +1,82 @@
+<div class="backdrop">
+  <div class="modal">
+
+    <div class="header">
+      <div class="header__title">
+        Расскажи о себе!
+      </div>
+      <div class="header__close">
+        <dx-button (onClick)="close.emit(null)"
+                   icon="close"></dx-button>
+      </div>
+    </div>
+
+    <div class="container" [formGroup]="sweetForm">
+
+      <div class="information">
+        <div class="information__subtitle">
+          Электронная почта
+        </div>
+        <div class="information__content">
+          <input class="information__input"
+                 [class.error]="sweetForm.get('email')?.touched && sweetForm.get('email')?.invalid"
+                 formControlName="email"
+                 placeholder="Иванов...">
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="information__subtitle">
+          Номер телефона
+        </div>
+        <div class="information__content">
+          <input class="information__input"
+                 [class.error]="sweetForm.get('phone')?.touched && sweetForm.get('phone')?.invalid"
+                 formControlName="phone"
+                 placeholder="88002003322">
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="information__subtitle">
+          Адресс
+        </div>
+        <div class="information__content">
+          <input class="information__input"
+                 [class.error]="sweetForm.get('address')?.touched && sweetForm.get('address')?.invalid"
+                 formControlName="address"
+                 placeholder="Иван..." (focus)="openMap()">
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="information__subtitle">
+          Дата и время
+        </div>
+        <div class="information__content">
+          <dx-date-box class="information__input date"
+                       [class.error]="sweetForm.get('date')?.touched && sweetForm.get('date')?.invalid"
+                       formControlName="date"
+                       type="datetime"
+                       placeholder="19.01.2000..."
+                       [showClearButton]="true"
+                       [useMaskBehavior]="true">
+          </dx-date-box>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="footer__button-cancel" (click)="close.emit(null)">
+          Попрощаться
+        </button>
+        <button class="footer__button-accept" [class.disabled]="!sweetForm.valid"
+                [disabled]="!sweetForm.valid"
+                (click)="accept()">
+          Продолжить
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

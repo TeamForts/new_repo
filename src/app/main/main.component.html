@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="header-wrapper">
+    <img [src]="'../../assets/images/logo.svg' | safe: 'resourceUrl' ">
+  </div>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="content__title">
+        <div *ngIf="welcome">Добро пожаловать {{person.personSurname}}  {{person.personName}} !
+
+        </div>
+        <div *ngIf="!welcome">Всего доброго!</div>
+      </div>
+      <div class="content__subtitle">
+        Желаю Вам хорошего дня и отличного настроения!
+      </div>
+      <div class="content__submit" [ngSwitch]="stage">
+        <div *ngSwitchCase="1">
+          <button class="content__button" (click)="openInitialsPopup()">
+            Перейти к знакомству
+          </button>
+        </div>
+        <div *ngSwitchCase="0">
+          <button class="content__button" (click)="openPersonalPopup()">
+            Познакомимся поближе
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

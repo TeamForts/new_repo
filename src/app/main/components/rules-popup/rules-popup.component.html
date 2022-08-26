@@ -1,0 +1,53 @@
+<div class="backdrop">
+  <div class="modal">
+
+    <div class="header">
+      <div class="header__title">
+        Важное объявление!
+      </div>
+      <div class="header__close">
+        <dx-button (onClick)="close.emit(null)"
+                   icon="close"></dx-button>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="information">
+        <div class="information__subtitle">
+          <dx-check-box [value]="acceptRules"
+                        (click)="acceptRules = !acceptRules">
+          </dx-check-box>
+        </div>
+        <div class="information__content">
+          Подтверждаю согласие на обработку персональных данных
+        </div>
+      </div>
+
+      <div class="information">
+        <div class="information__subtitle">
+          <dx-check-box [value]="notify"
+                        (click)="notify = !notify">
+          </dx-check-box>
+        </div>
+        <div class="information__content">
+          Оповещать, если по данному адресу найдены происшествия
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="footer__button-cancel" (click)="close.emit(null)">
+          Попрощаться
+        </button>
+        <button class="footer__button-accept"
+                [class.disabled]="!acceptRules"
+                [disabled]="!acceptRules"
+                (click)="accept()">
+          Продолжить
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
