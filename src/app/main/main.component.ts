@@ -9,7 +9,8 @@ import {PersonalPopupComponent} from "./components/personal-popup/personal-popup
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  public person: PersonInterface = {
+  public person: PersonInterface;
+  public initPerson: PersonInterface = {
     personName: null,
     personSurname: null,
     email: null,
@@ -21,15 +22,18 @@ export class MainComponent implements OnInit {
 
   constructor(
     private _containerRef: ViewContainerRef,
-  ) { }
+  ) {
+    this.person = JSON.parse(JSON.stringify(this.initPerson));
+  }
 
   ngOnInit(): void {
+
   }
 
 
   public openInitialsPopup(): void {
     const component = this._containerRef.createComponent(InitialsPopupComponent);
-    component.instance.close.subscribe( (result: PersonInterface | null) => {
+    component.instance.close.subscribe((result: PersonInterface | null) => {
       this._containerRef.clear();
       if (result !== null) {
         this.person.personName = result.personName;
@@ -44,15 +48,16 @@ export class MainComponent implements OnInit {
 
   public openPersonalPopup(): void {
     const component = this._containerRef.createComponent(PersonalPopupComponent);
-    component.instance.close.subscribe( (result: PersonInterface | null) => {
-      this._containerRef.clear();
-      if (result !== null) {
-        this.welcome = true;
-        this.stage = 2;
-      } else {
-        this.welcome = false;
-      }
-    })
+    component.instance.personName = this.person.personName;
+    component.instance.personSurname = this.person.personSurname;
+    component.instance.close.subscribe((result: PersonInterface | null) => this._containerRef.clear());
+  }
+
+  public resetData(): void {
+    console.log('click');
+    this.stage = 0;
+    this.welcome = true;
+    this.person = JSON.parse(JSON.stringify(this.initPerson));
   }
 
 

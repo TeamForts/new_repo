@@ -15,16 +15,20 @@
         Желаю Вам хорошего дня и отличного настроения!
       </div>
       <div class="content__submit" [ngSwitch]="stage">
-        <div *ngSwitchCase="1">
+        <div *ngSwitchCase="0">
           <button class="content__button" (click)="openInitialsPopup()">
             Перейти к знакомству
           </button>
         </div>
-        <div *ngSwitchCase="0">
+        <div *ngSwitchCase="1">
           <button class="content__button" (click)="openPersonalPopup()">
             Познакомимся поближе
           </button>
         </div>
+        <button class="content__button-cancel" (click)="resetData()">
+          Сбросить
+        </button>
+
 
       </div>
     </div>

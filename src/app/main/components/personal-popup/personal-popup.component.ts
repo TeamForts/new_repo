@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {PersonInterface} from "../../interfaces/person.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {YmapPopupComponent} from "../ymap-popup/ymap-popup.component";
 import {RulesPopupComponent} from "../rules-popup/rules-popup.component";
+import {MainService} from "../../services/main.service";
 
 @Component({
   selector: 'app-personal-popup',
@@ -13,20 +14,26 @@ export class PersonalPopupComponent implements OnInit {
   // @ts-ignore
   public sweetForm: FormGroup;
 
+  @Input() personName: string | null = null;
+  @Input() personSurname: string | null = null;
   @Output() close = new EventEmitter<PersonInterface | null>();
 
   constructor(
     private _fb: FormBuilder,
+    private _mainService: MainService,
     private _containerRef: ViewContainerRef,
   ) {
-    this._createForm();
+
   }
 
   ngOnInit(): void {
+    this._createForm();
   }
 
   private _createForm(): void {
     this.sweetForm = this._fb.group({
+      personName: [this.personName, Validators.required],
+      personSurname: [this.personSurname, Validators.required],
       address: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       phone: [null, [Validators.required, Validators.pattern("[0-9]{11}")] ],
@@ -49,15 +56,13 @@ export class PersonalPopupComponent implements OnInit {
   public accept(): void {
     const component = this._containerRef.createComponent(RulesPopupComponent);
     component.instance.close.subscribe( result => {
-      if (result) {
-        this.close.emit(this.sweetForm.getRawValue());
-      } else {
-
-      }
-      this._containerRef.clear();
-    })
-
-
+        this._containerRef.clear();
+        if (result) {
+          console.log(this.sweetForm.getRawValue());
+          this._mainService.sendData(this.sweetForm.getRawValue());
+          this.close.emit(this.sweetForm.getRawValue());
+        }
+      })
   }
 
 }

@@ -8,8 +8,8 @@ import {PersonInterface} from "../../interfaces/person.interface";
 })
 export class RulesPopupComponent implements OnInit {
 
-  public acceptRules: boolean = true;
-  public notify: boolean = true;
+  public acceptRules: boolean | null | undefined = false;
+  public notify: boolean | null | undefined = false;
 
   @Output() close = new EventEmitter<PersonInterface | null>();
 

@@ -15,8 +15,7 @@
 
       <div class="information">
         <div class="information__subtitle">
-          <dx-check-box [value]="acceptRules"
-                        (click)="acceptRules = !acceptRules">
+          <dx-check-box [(value)]="acceptRules">
           </dx-check-box>
         </div>
         <div class="information__content">
@@ -26,8 +25,7 @@
 
       <div class="information">
         <div class="information__subtitle">
-          <dx-check-box [value]="notify"
-                        (click)="notify = !notify">
+          <dx-check-box [(value)]="notify">
           </dx-check-box>
         </div>
         <div class="information__content">
