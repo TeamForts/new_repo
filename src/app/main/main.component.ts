@@ -44,6 +44,8 @@ export class MainComponent implements OnInit {
 
   public openPersonalPopup(): void {
     const component = this._containerRef.createComponent(PersonalPopupComponent);
+    component.instance.personName = this.person.personName;
+    component.instance.personSurname = this.person.personSurname;
     component.instance.close.subscribe( (result: PersonInterface | null) => {
       this._containerRef.clear();
       if (result !== null) {
